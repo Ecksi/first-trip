@@ -1,14 +1,18 @@
 {
-  "name": "ecksi",
+  "name": "first-trip",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^5.0.4",
     "node-sass-chokidar": "^1.2.2",
     "npm-run-all": "^4.1.3",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4"
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
@@ -19,11 +23,12 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "eslint": "./node_modules/eslint/bin/eslint.js ./src/*.js"
+    "lint": "./node_modules/eslint/bin/eslint.js ./src/ --ignore-pattern *.test.js"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.19.1"
+    "eslint": "^4.19.1",
+    "jest": "^23.0.0"
   }
 }
