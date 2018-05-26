@@ -48,7 +48,7 @@
     "camelcase": "warn",
     "comma-dangle": [
       "error",
-      "never"
+      "only-multiline"
     ],
     "comma-spacing": [
       "error",
