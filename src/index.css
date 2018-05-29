@@ -1,4 +1,11 @@
-body {
+* {
   padding: 0;
   margin: 0;
   font-family: sans-serif; }
+
+.header-background {
+  height: 350px;
+  background-image: url("https://greenrushdaily.com/wp-content/uploads/2017/08/how-to-buy-legal-weed-in-colorado-4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 49%; }
