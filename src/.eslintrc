@@ -91,7 +91,6 @@
     "id-length": "error",
     "id-blacklist": [
       "error",
-      "data",
       "err",
       "e",
       "cb",
