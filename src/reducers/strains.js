@@ -1,6 +1,4 @@
-const INITIAL_STATE = {
-  strains: [],
-};
+const INITIAL_STATE = [];
 
 function strainsReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
