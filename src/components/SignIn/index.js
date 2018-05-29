@@ -4,9 +4,14 @@ import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
+import Navigation from '../Navigation';
+
 
 const SignInPage = ({ history }) =>
   <div>
+    <div className="header-background">
+      <Navigation />
+    </div>
     <h1>SignIn</h1>
     <SignInForm history={history} />
     <PasswordForgetLink />

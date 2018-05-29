@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SignOutButton from '../SignOut';
 import * as routes from '../../constants/routes';
+import './Navigation.css';
 
 const Navigation = ({ authUser }) =>
-  <div>
+  <div className="Navigation">
     {authUser
       ? <NavigationAuth />
       : <NavigationNonAuth />
