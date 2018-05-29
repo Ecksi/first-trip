@@ -1,0 +1,22 @@
+li {
+  list-style-type: none;
+  text-align: center;
+}
+
+li:hover {
+  background: blue;
+}
+
+li:active {
+  background: red;
+}
+
+button {
+  width: 150px;
+  height: 50px;
+}
+
+.selected {
+  background-color: purple;
+  border: 2px solid green;
+}
