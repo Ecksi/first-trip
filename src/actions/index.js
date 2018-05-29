@@ -7,3 +7,8 @@ export const addEffects = effects => ({
   type: 'ADD_EFFECTS',
   effects
 });
+
+export const addFilter = filters => ({
+  type: 'ADD_FILTER',
+  filters
+}); 
