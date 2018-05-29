@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import withAuthorization from '../../auth/withAuthorization';
 import { db } from '../../firebase';
+import Navigation from '../Navigation';
+import StrainContainer from '../StrainContainer';
 
 class HomePage extends Component {
   componentDidMount() {
@@ -18,10 +20,14 @@ class HomePage extends Component {
 
     return (
       <div>
-        <h1>Home Page</h1>
+        <div className="header-background">
+          <Navigation />
+        </div>
         <p>The Home Page is accessible by every signed in user.</p>
-
+        <StrainContainer />
+        
         { !!users && <UserList users={users} /> }
+
       </div>
     );
   }
