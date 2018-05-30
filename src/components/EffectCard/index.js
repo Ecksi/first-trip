@@ -7,16 +7,17 @@ import './EffectCard.css';
 const EffectCard = props => {
   const handleClick = event => {
     const { name } = event.target;
+    const findIndex = props.filters.indexOf(name);
 
-    if (!props.filters.includes(name)) {
-      props.addFilters(name);
-    }
+    props.filters.includes(name)
+      ? props.filters.splice(findIndex, 1)
+      : props.addFilters(name);
   };
 
-  const foo = props.filters.includes(props.effect) ? "selected" : null
+  const selectedFilter = props.filters.includes(props.effect) ? "selected" : "notSelected";
 
   return (
-    <li className={foo}>
+    <li className={`fii ${selectedFilter}`}>
       <button 
         onClick={handleClick}
         name={props.effect}

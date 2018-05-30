@@ -1,0 +1,19 @@
+.strainCard {
+  border: 2px solid green;
+  width: 30%; }
+
+h3 {
+  text-align: center; }
+
+.strain-effects {
+  display: flex;
+  height: 175px; }
+  .strain-effects h4 {
+    text-align: center;
+    text-decoration: underline; }
+  .strain-effects ul {
+    height: 120px; }
+
+.flavors {
+  display: flex;
+  justify-content: space-around; }

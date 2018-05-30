@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addStrains, addEffects, addFilter } from '../../actions';
+import {
+  NavLink,
+  withRouter } from 'react-router-dom';
+import { 
+  addStrains,
+  addEffects,
+  addFilter,
+  searchResults } from '../../actions';
 import fetchStrainData from '../../utils/fetchStrainData';
 import fetchStrainEffects from '../../utils/fetchEffectsData';
 import EffectCard from '../EffectCard';
@@ -25,54 +31,51 @@ class StrainContainer extends Component {
     this.props.addEffects(effectsData);
   }
 
-  showEffects = effectType => {
-    const sortedEffects = this.props.effects[effectType].sort();
+  showEffects = type => {
+    let propEffects = this.props.effects;
 
-    return sortedEffects.map((effect, index) => (
-      <EffectCard
-        key={index}
-        effect={effect}
-      />
-    ));
+    if (this.props.effects[type]) {
+      const sortedEffects = propEffects[type].sort();
+
+      return sortedEffects.map((effect, index) => (
+        <EffectCard
+          key={index}
+          effect={effect}
+        />
+      ));
+    }
   }
 
-  filterEffects = () => {
+  filterEffects = (event) => {
     let searchFilters = this.props.filters;
+    let addSearchResults = this.props.searchResults;
     const strains = this.props.strains;
+    let name = event.target.name;
 
     if (this.props.strains.length > 1) {
-      let filteredResults = strains.reduce((strainScores, strain) => {
+      let strainsByFiltered = strains.reduce((strainScores, strain) => {
         let score = 0;
 
         searchFilters.forEach(elem =>
-          strain.effects.positive.includes(elem) ? score++ : null);
+          strain.effects[name].includes(elem) ? score++ : null);
 
-        strainScores[score] ? strainScores[score].push(strain) : strainScores[score] = [];
+        strainScores[score] 
+          ? strainScores[score].push(strain)
+          : strainScores[score] = [];
 
         return strainScores;
       }, {});
-      const mostResults = Math.max(...Object.keys(filteredResults));
 
-      return filteredResults[mostResults];
-    }
-  }
+      const highestMatch = Math.max(...Object.keys(strainsByFiltered));
+      const searchResults = strainsByFiltered[highestMatch];
 
-  showPositiveEffects = () => {
-    if (this.props.effects.positive) {
-      return this.showEffects('positive');
+      name === 'negative'
+        ? addSearchResults(strainsByFiltered['0'])
+        : addSearchResults(searchResults);
     }
-  }
-
-  showMedicalEffects = () => {
-    if (this.props.effects.medical) {
-      return this.showEffects('medical');
-    }
-  }
-
-  showNegativeEffects = () => {
-    if (this.props.effects.negative) {
-      return this.showEffects('negative');
-    }
+    // what if a strain returns zero matches,
+    // what if a strain only matches 4 of the 5 filters or 3 of the 5 filters
+    // how can I break this apart into smaller pieces.
   }
 
   render() {
@@ -87,19 +90,19 @@ class StrainContainer extends Component {
         </div>
         <div className="effects">
           <ul>
-            {this.showPositiveEffects()}
+            {this.showEffects('positive')}
           </ul>
           <ul>
-            {this.showMedicalEffects()}
+            {this.showEffects('medical')}
           </ul>
           <ul>
-            {this.showNegativeEffects()}
+            {this.showEffects('negative')}
           </ul>
         </div>
         <div className="effects">
-          <NavLink to="/results"><button className="filter" onClick={this.filterEffects}>Filter by Positive</button></NavLink>
-          <button className="filter">Filter by Medical</button>
-          <button className="filter">Filter by Negative</button>
+          <NavLink to="/results"><button className="filter" onClick={this.filterEffects} name="positive">Filter by Positive</button></NavLink>
+          <NavLink to="/results"><button className="filter" onClick={this.filterEffects} name="medical">Filter by Medical</button></NavLink>
+          <NavLink to="/results"><button className="filter" onClick={this.filterEffects} name="negative">Filter by Negative</button></NavLink>
         </div>
       </div>
     );
@@ -110,12 +113,14 @@ export const mapStateToProps = state => ({
   strains: state.strains,
   effects: state.effects,
   filters: state.filters,
+  results: state.results,
 });
 
 export const mapDispatchToProps = dispatch => ({
   addStrains: strains => dispatch(addStrains(strains)),
   addEffects: effects => dispatch(addEffects(effects)),
   addFilters: filters => dispatch(addFilter(filters)),
+  searchResults: results => dispatch(searchResults(results)),
 });
 
 export default withRouter(
