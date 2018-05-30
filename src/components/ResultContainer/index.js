@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import StrainCard from '../StrainCard';
 import Navigation from '../Navigation';
 import './ResultsContainer.css';
+import PropTypes from 'prop-types';
 
 const ResultContainer = props => {
   const searchCards = () => {
@@ -30,5 +31,9 @@ const ResultContainer = props => {
 export const mapStateToProps = state => ({
   results: state.results,
 });
+
+ResultContainer.propTypes = {
+  results: PropTypes.array.isRequired,
+};
 
 export default connect(mapStateToProps)(ResultContainer);

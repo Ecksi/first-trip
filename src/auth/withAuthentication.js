@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { firebase } from '../firebase';
+import PropTypes from 'prop-types';
 
-const withAuthentication = (Component) => {
+const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
     componentDidMount() {
       const { onSetAuthUser } = this.props;
@@ -24,6 +25,10 @@ const withAuthentication = (Component) => {
   const mapDispatchToProps = (dispatch) => ({
     onSetAuthUser: (authUser) => dispatch({ type: 'AUTH_USER_SET', authUser }),
   });
+
+  WithAuthentication.propTypes = {
+    onSetAuthUser: PropTypes.object.isRequired,
+  };
 
   return connect(null, mapDispatchToProps)(WithAuthentication);
 };

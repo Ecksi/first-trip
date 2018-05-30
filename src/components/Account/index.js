@@ -5,6 +5,7 @@ import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
 import withAuthorization from '../../auth/withAuthorization';
 import Navigation from '../Navigation';
+import PropTypes from 'prop-types';
 
 const AccountPage = ({ authUser }) =>
   <div>
@@ -21,6 +22,10 @@ export const mapStateToProps = (state) => ({
 });
 
 const authCondition = authUser => !!authUser;
+
+AccountPage.propTypes = {
+  authUser: PropTypes.object.isRequired,
+};
 
 export default compose(
   withAuthorization(authCondition),

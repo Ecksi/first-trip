@@ -12,6 +12,7 @@ import fetchStrainData from '../../utils/fetchStrainData';
 import fetchStrainEffects from '../../utils/fetchEffectsData';
 import EffectCard from '../EffectCard';
 import './StrainContainer.css';
+import PropTypes from 'prop-types';
 
 class StrainContainer extends Component {
   componentDidMount = async () => {
@@ -100,9 +101,23 @@ class StrainContainer extends Component {
           </ul>
         </div>
         <div className="effects">
-          <NavLink to="/results"><button className="filter" onClick={this.filterEffects} name="positive">Filter by Positive</button></NavLink>
-          <NavLink to="/results"><button className="filter" onClick={this.filterEffects} name="medical">Filter by Medical</button></NavLink>
-          <NavLink to="/results"><button className="filter" onClick={this.filterEffects} name="negative">Filter by Negative</button></NavLink>
+          <NavLink to="/results">
+            <button
+              className="filter"
+              onClick={this.filterEffects}
+              name="positive">Filter by Positive
+            </button>
+            <button
+              className="filter"
+              onClick={this.filterEffects}
+              name="medical">Filter by Medical
+            </button>
+            <button
+              className="filter"
+              onClick={this.filterEffects}
+              name="negative">Filter by Negative
+            </button>
+          </NavLink>
         </div>
       </div>
     );
@@ -122,6 +137,15 @@ export const mapDispatchToProps = dispatch => ({
   addFilters: filters => dispatch(addFilter(filters)),
   searchResults: results => dispatch(searchResults(results)),
 });
+
+StrainContainer.propTypes = {
+  addStrains: PropTypes.func.isRequired,
+  addEffects: PropTypes.func.isRequired,
+  strains: PropTypes.array.isRequired,
+  effects: PropTypes.object.isRequired,
+  filters: PropTypes.array.isRequired,
+  searchResults: PropTypes.array.isRequired,
+};
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(StrainContainer));

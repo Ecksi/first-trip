@@ -5,6 +5,7 @@ import withAuthorization from '../../auth/withAuthorization';
 import { db } from '../../firebase';
 import Navigation from '../Navigation';
 import StrainContainer from '../StrainContainer';
+import PropTypes from 'prop-types';
 
 class HomePage extends Component {
   componentDidMount() {
@@ -16,8 +17,6 @@ class HomePage extends Component {
   }
 
   render() {
-    const { users } = this.props;
-
     return (
       <div>
         <div className="header-background">
@@ -25,24 +24,10 @@ class HomePage extends Component {
         </div>
         <p>The Home Page is accessible by every signed in user.</p>
         <StrainContainer />
-        
-        { !!users && <UserList users={users} /> }
-
       </div>
     );
   }
 }
-
-const UserList = ({ users }) =>
-  <div>
-    <h2>List of Usernames of Users</h2>
-    <p>(Saved on Sign Up in Firebase Database)</p>
-    {Object.keys(users).map(key =>
-      <div key={key}>
-        {users[key].username}
-      </div>
-    )}
-  </div>;
 
 const mapStateToProps = state => ({
   users: state.userState.users,
@@ -53,6 +38,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const authCondition = authUser => !!authUser;
+
+HomePage.propTypes = {
+  onSetUsers: PropTypes.object.isRequired,
+};
 
 export default compose(
   withAuthorization(authCondition),
