@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import SignOutButton from '../SignOut';
 import * as routes from '../../constants/routes';
 import './Navigation.css';
+import PropTypes from 'prop-types';
 
 const Navigation = ({ authUser }) =>
   <div className="Navigation">
@@ -30,5 +31,9 @@ const NavigationNonAuth = () =>
 const mapStateToProps = (state) => ({
   authUser: state.sessionState.authUser,
 });
+
+Navigation.propTypes = {
+  authUser: PropTypes.object.isRequired,
+};
 
 export default connect(mapStateToProps)(Navigation);
