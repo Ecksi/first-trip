@@ -12,3 +12,8 @@ export const addFilter = filters => ({
   type: 'ADD_FILTER',
   filters
 }); 
+
+export const searchResults = results => ({
+  type: 'SEARCH_RESULTS',
+  results
+});
