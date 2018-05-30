@@ -24,6 +24,11 @@ const withAuthorization = condition => Component => {
     authUser: state.sessionState.authUser,
   });
 
+  WithAuthorization.propTypes = {
+    history: PropTypes.object.isRequired,
+    authUser: PropTypes.object.isRequired,
+  };
+
   return compose(
     withRouter,
     connect(mapStateToProps),
