@@ -1,16 +1,17 @@
 import React from 'react';
 import './StrainCard.css';
+import PropTypes from 'prop-types';
 
 const StrainCard = props => {
-  const { id, name, race, effects, flavors } = props;
+  const { name, race, effects, flavors } = props;
 
-  const getEffects = (type, props) => {
+  const getEffects = type => {
     return effects[type].map(effect => (
       <li>{effect}</li>
     ));
   };
 
-  const getFlavors = props => {
+  const getFlavors = () => {
     return flavors.map(flavor => (
       <li>{flavor}</li>
     ));
@@ -39,6 +40,13 @@ const StrainCard = props => {
       <ul className="flavors">{getFlavors()}</ul>
     </div>
   );
+};
+
+StrainCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  race: PropTypes.string.isRequired,
+  effects: PropTypes.object,
+  flavors: PropTypes.array,
 };
 
 export default StrainCard;
