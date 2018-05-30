@@ -4,8 +4,9 @@ import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import { firebase } from '../firebase';
 import * as routes from '../constants/routes';
+import PropTypes from 'prop-types';
 
-const withAuthorization = condition => (Component) => {
+const withAuthorization = condition => Component => {
   class WithAuthorization extends React.Component {
     componentDidMount() {
       firebase.auth.onAuthStateChanged(authUser => {
