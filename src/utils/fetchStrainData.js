@@ -13,8 +13,8 @@ const cleanStrainData = dirtyData => {
   const strainData = Object.values(dirtyData);
   let cleanStrainData = [];
 
-  for (let i = 0; i < strainData.length; i++) {
-    cleanStrainData.push({...strainData[i], name: strainNames[i]});
+  for (let index = 0; index < strainData.length; index++) {
+    cleanStrainData.push({...strainData[index], name: strainNames[index]});
   }
   
   return cleanStrainData;
