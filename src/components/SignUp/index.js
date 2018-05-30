@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import { auth, db } from '../../firebase';
 import * as routes from '../../constants/routes';
+import PropTypes from 'prop-types';
 
 const INITIAL_STATE = {
   username: '',
@@ -117,10 +118,18 @@ class SignUpForm extends Component {
 
 const SignUpLink = () =>
   <p>
-    Don't have an account?
+    {`Don't have an account?`}
     {' '}
     <Link to={routes.SIGN_UP}>Sign Up</Link>
   </p>;
+
+SignUpPage.propTypes = {
+  history: PropTypes.object.isRequired,
+};
+
+SignUpForm.propTypes = {
+  history: PropTypes.object.isRequired,
+};
 
 export default withRouter(SignUpPage);
 
