@@ -5,17 +5,16 @@ import PropTypes from 'prop-types';
 
 const StrainCard = props => {
   const { name, race, effects, flavors } = props;
-  const makeId = shortid.generate();
 
   const getEffects = type => {
     return effects[type].map(effect => (
-      <li key={makeId}>{effect}</li>
+      <li key={shortid.generate()}>{effect}</li>
     ));
   };
 
   const getFlavors = () => {
     return flavors.map(flavor => (
-      <li key={makeId}>{flavor}</li>
+      <li key={shortid.generate()}>{flavor}</li>
     ));
   };
 

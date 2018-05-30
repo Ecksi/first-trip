@@ -40,8 +40,8 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 EffectCard.propTypes = {
-  filters: PropTypes.object.isRequired,
-  effect: PropTypes.object.isRequired,
+  filters: PropTypes.array.isRequired,
+  effect: PropTypes.string.isRequired,
   addFilters: PropTypes.func.isRequired,
 };
 

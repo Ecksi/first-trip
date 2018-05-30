@@ -26,7 +26,7 @@ const withAuthorization = condition => Component => {
 
   WithAuthorization.propTypes = {
     history: PropTypes.object.isRequired,
-    authUser: PropTypes.object.isRequired,
+    authUser: PropTypes.object,
   };
 
   return compose(

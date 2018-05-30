@@ -144,7 +144,7 @@ StrainContainer.propTypes = {
   strains: PropTypes.array.isRequired,
   effects: PropTypes.object.isRequired,
   filters: PropTypes.array.isRequired,
-  searchResults: PropTypes.array.isRequired,
+  searchResults: PropTypes.func.isRequired,
 };
 
 export default withRouter(
