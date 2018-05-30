@@ -40,7 +40,7 @@ const mapDispatchToProps = dispatch => ({
 const authCondition = authUser => !!authUser;
 
 HomePage.propTypes = {
-  onSetUsers: PropTypes.object.isRequired,
+  onSetUsers: PropTypes.func.isRequired,
 };
 
 export default compose(

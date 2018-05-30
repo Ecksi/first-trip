@@ -33,7 +33,7 @@ const mapStateToProps = (state) => ({
 });
 
 Navigation.propTypes = {
-  authUser: PropTypes.object.isRequired,
+  authUser: PropTypes.object,
 };
 
 export default connect(mapStateToProps)(Navigation);

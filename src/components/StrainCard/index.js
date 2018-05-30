@@ -1,5 +1,6 @@
 import React from 'react';
 import './StrainCard.css';
+import shortid from 'shortid';
 import PropTypes from 'prop-types';
 
 const StrainCard = props => {
@@ -7,13 +8,13 @@ const StrainCard = props => {
 
   const getEffects = type => {
     return effects[type].map(effect => (
-      <li>{effect}</li>
+      <li key={shortid.generate()}>{effect}</li>
     ));
   };
 
   const getFlavors = () => {
     return flavors.map(flavor => (
-      <li>{flavor}</li>
+      <li key={shortid.generate()}>{flavor}</li>
     ));
   };
 

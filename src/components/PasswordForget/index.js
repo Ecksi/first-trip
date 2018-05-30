@@ -6,7 +6,7 @@ const PasswordForgetPage = () =>
   <div>
     <h1>PasswordForget</h1>
     <PasswordForgetForm />
-  </div>
+  </div>;
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,
@@ -50,7 +50,8 @@ class PasswordForgetForm extends Component {
       <form onSubmit={this.onSubmit}>
         <input
           value={this.state.email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
+          onChange={event => 
+            this.setState(byPropKey('email', event.target.value))}
           type="text"
           placeholder="Email Address"
         />
@@ -67,7 +68,7 @@ class PasswordForgetForm extends Component {
 const PasswordForgetLink = () =>
   <p>
     <Link to="/pw-forget">Forgot Password?</Link>
-  </p>
+  </p>;
 
 export default PasswordForgetPage;
 
