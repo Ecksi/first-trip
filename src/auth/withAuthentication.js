@@ -26,6 +26,10 @@ const withAuthentication = Component => {
     onSetAuthUser: (authUser) => dispatch({ type: 'AUTH_USER_SET', authUser }),
   });
 
+  WithAuthentication.propTypes = {
+    onSetAuthUser: PropTypes.object.isRequired,
+  };
+
   return connect(null, mapDispatchToProps)(WithAuthentication);
 };
 
