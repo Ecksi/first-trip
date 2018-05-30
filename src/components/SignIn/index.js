@@ -5,7 +5,7 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 import Navigation from '../Navigation';
-
+import PropTypes from 'prop-types';
 
 const SignInPage = ({ history }) =>
   <div>
@@ -72,13 +72,17 @@ class SignInForm extends Component {
       <form onSubmit={this.onSubmit}>
         <input
           value={email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
+          onChange={
+            event => this.setState(byPropKey('email', event.target.value))
+          }
           type="text"
           placeholder="Email Address"
         />
         <input
           value={password}
-          onChange={event => this.setState(byPropKey('password', event.target.value))}
+          onChange={
+            event => this.setState(byPropKey('password', event.target.value))
+          }
           type="password"
           placeholder="Password"
         />
@@ -91,6 +95,14 @@ class SignInForm extends Component {
     );
   }
 }
+
+SignInPage.propTypes = {
+  history: PropTypes.object.isRequired,
+};
+
+SignInForm.propTypes = {
+  history: PropTypes.object.isRequired,
+};
 
 export default withRouter(SignInPage);
 
