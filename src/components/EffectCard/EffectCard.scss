@@ -3,11 +3,11 @@ li {
   text-align: center;
 }
 
-.fii:hover {
+.effect-button:hover {
   background: blue;
 }
 
-.fii:active {
+.effect-button:active {
   background: red;
 }
 
@@ -19,9 +19,4 @@ button {
 .selected {
   background-color: purple;
   border: 2px solid green;
-}
-
-.notSelected {
-  background: none;
-  border: none;
 }

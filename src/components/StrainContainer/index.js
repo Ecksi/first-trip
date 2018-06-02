@@ -7,6 +7,7 @@ import {
   addStrains,
   addEffects,
   addFilter,
+  resetFilter,
   searchResults } from '../../actions';
 import fetchStrainData from '../../utils/fetchStrainData';
 import fetchStrainEffects from '../../utils/fetchEffectsData';
@@ -47,7 +48,7 @@ class StrainContainer extends Component {
     }
   }
 
-  filterEffects = (event) => {
+  filterEffects = event => {
     let searchFilters = this.props.filters;
     let addSearchResults = this.props.searchResults;
     const strains = this.props.strains;
@@ -74,6 +75,8 @@ class StrainContainer extends Component {
         ? addSearchResults(strainsByFiltered['0'])
         : addSearchResults(searchResults);
     }
+
+    this.props.resetFilter();
     // what if a strain returns zero matches,
     // what if a strain only matches 4 of the 5 filters or 3 of the 5 filters
     // how can I break this apart into smaller pieces.
@@ -136,6 +139,7 @@ export const mapDispatchToProps = dispatch => ({
   addEffects: effects => dispatch(addEffects(effects)),
   addFilters: filters => dispatch(addFilter(filters)),
   searchResults: results => dispatch(searchResults(results)),
+  resetFilter: () => dispatch(resetFilter()),
 });
 
 StrainContainer.propTypes = {
@@ -145,6 +149,7 @@ StrainContainer.propTypes = {
   effects: PropTypes.object.isRequired,
   filters: PropTypes.array.isRequired,
   searchResults: PropTypes.func.isRequired,
+  resetFilter: PropTypes.func.isRequired,
 };
 
 export default withRouter(
