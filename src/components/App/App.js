@@ -9,9 +9,9 @@ import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
-import HomePage from '../Home';
-import AccountPage from '../Account';
-import ResultContainer from  '../ResultContainer';
+import HomePage from '../../containers/Home';
+import AccountPage from '../../containers/Account';
+import ResultContainer from  '../../containers/ResultContainer';
 
 export const App = () => 
   <Router>

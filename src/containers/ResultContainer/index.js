@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import StrainCard from '../StrainCard';
+import StrainCard from '../../components/StrainCard';
 import Navigation from '../Navigation';
 import './ResultsContainer.css';
 import PropTypes from 'prop-types';
