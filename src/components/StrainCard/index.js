@@ -39,6 +39,7 @@ const StrainCard = props => {
       </div>
       <h3>Flavors:</h3>
       <ul className="flavors">{getFlavors()}</ul>
+      <button>Add to Favorites</button>
     </div>
   );
 };
