@@ -50,11 +50,33 @@ class StrainContainer extends Component {
   }
 
   filterEffects = event => {
-    let name = event.target.name;
     let searchFilters = this.props.filters;
+    let addSearchResults = this.props.searchResults;
     const strains = this.props.strains;
+    let name = event.target.name;
 
-    this.props.searchByFilters(name, searchFilters, strains);
+    if (this.props.strains.length > 1) {
+      let strainsByFiltered = strains.reduce((strainScores, strain) => {
+        let score = 0;
+
+        searchFilters.forEach(elem =>
+          strain.effects[name].includes(elem) ? score++ : null);
+
+        strainScores[score]
+          ? strainScores[score].push(strain)
+          : strainScores[score] = [];
+
+        return strainScores;
+      }, {});
+
+      const highestMatch = Math.max(...Object.keys(strainsByFiltered));
+      const searchResults = strainsByFiltered[highestMatch];
+
+      name === 'negative'
+        ? addSearchResults(strainsByFiltered['0'])
+        : addSearchResults(searchResults);
+    }
+
     this.props.resetFilter();
   }
 
