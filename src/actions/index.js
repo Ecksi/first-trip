@@ -26,3 +26,10 @@ export const searchResults = results => ({
   type: 'SEARCH_RESULTS',
   results
 });
+
+export const searchByFilters = (effectType, filters, strains) => ({
+  type: 'SEARCH_BY_FILTERS',
+  effectType,
+  filters,
+  strains
+});

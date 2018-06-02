@@ -8,7 +8,8 @@ import {
   addEffects,
   addFilter,
   resetFilter,
-  searchResults } from '../../actions';
+  searchResults,
+  searchByFilters } from '../../actions';
 import fetchStrainData from '../../utils/fetchStrainData';
 import fetchStrainEffects from '../../utils/fetchEffectsData';
 import EffectCard from '../EffectCard';
@@ -49,37 +50,12 @@ class StrainContainer extends Component {
   }
 
   filterEffects = event => {
-    let searchFilters = this.props.filters;
-    let addSearchResults = this.props.searchResults;
-    const strains = this.props.strains;
     let name = event.target.name;
+    let searchFilters = this.props.filters;
+    const strains = this.props.strains;
 
-    if (this.props.strains.length > 1) {
-      let strainsByFiltered = strains.reduce((strainScores, strain) => {
-        let score = 0;
-
-        searchFilters.forEach(elem =>
-          strain.effects[name].includes(elem) ? score++ : null);
-
-        strainScores[score] 
-          ? strainScores[score].push(strain)
-          : strainScores[score] = [];
-
-        return strainScores;
-      }, {});
-
-      const highestMatch = Math.max(...Object.keys(strainsByFiltered));
-      const searchResults = strainsByFiltered[highestMatch];
-
-      name === 'negative'
-        ? addSearchResults(strainsByFiltered['0'])
-        : addSearchResults(searchResults);
-    }
-
+    this.props.searchByFilters(name, searchFilters, strains);
     this.props.resetFilter();
-    // what if a strain returns zero matches,
-    // what if a strain only matches 4 of the 5 filters or 3 of the 5 filters
-    // how can I break this apart into smaller pieces.
   }
 
   render() {
@@ -139,6 +115,8 @@ export const mapDispatchToProps = dispatch => ({
   addEffects: effects => dispatch(addEffects(effects)),
   addFilters: filters => dispatch(addFilter(filters)),
   searchResults: results => dispatch(searchResults(results)),
+  searchByFilters: (effectType, filters, strains) =>
+    dispatch(searchByFilters(effectType, filters, strains)),
   resetFilter: () => dispatch(resetFilter()),
 });
 
@@ -149,6 +127,7 @@ StrainContainer.propTypes = {
   effects: PropTypes.object.isRequired,
   filters: PropTypes.array.isRequired,
   searchResults: PropTypes.func.isRequired,
+  searchByFilters: PropTypes.func.isRequired,
   resetFilter: PropTypes.func.isRequired,
 };
 
