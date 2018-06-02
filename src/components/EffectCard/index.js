@@ -1,27 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { addFilter } from '../../actions';
+import { addFilter, removeFilter } from '../../actions';
 import './EffectCard.css';
 import PropTypes from 'prop-types';
 
 const EffectCard = props => {
   const handleClick = event => {
     const { name } = event.target;
-    const findIndex = props.filters.indexOf(name);
 
     props.filters.includes(name)
-      ? props.filters.splice(findIndex, 1)
+      ? props.removeFilter(name)
       : props.addFilters(name);
   };
 
-  const selectedFilter = props.filters.includes(props.effect) 
+  const selectedFilter = props.filters.includes(props.effect)
     ? "selected" 
-    : "notSelected";
+    : null;
 
   return (
-    <li className={`fii ${selectedFilter}`}>
-      <button 
+    <li className={`effect-button ${selectedFilter}`}>
+      <button
         onClick={handleClick}
         name={props.effect}
       >
@@ -37,12 +36,14 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
   addFilters: filters => dispatch(addFilter(filters)),
+  removeFilter: filter => dispatch(removeFilter(filter)),
 });
 
 EffectCard.propTypes = {
   filters: PropTypes.array.isRequired,
   effect: PropTypes.string.isRequired,
   addFilters: PropTypes.func.isRequired,
+  removeFilter: PropTypes.func.isRequired,
 };
 
 export default withRouter(
