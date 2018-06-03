@@ -5,23 +5,24 @@ import PropTypes from 'prop-types';
 
 const StrainCard = props => {
   const { name, race, effects, flavors } = props;
+  const sanitizedRace = race[0].toUpperCase() + race.substring(1);
 
   const getEffects = type => {
     return effects[type].map(effect => (
-      <li key={shortid.generate()}>{effect}</li>
+      <li key={shortid.generate()} className="strain-effect">{effect}</li>
     ));
   };
 
   const getFlavors = () => {
     return flavors.map(flavor => (
-      <li key={shortid.generate()}>{flavor}</li>
+      <li key={shortid.generate()} className="strain-effect">{flavor}</li>
     ));
   };
 
   return (
     <div className="strain-card">
       <h1>{name}</h1>
-      <h3>Type: {race}</h3>
+      <h3>Type: {sanitizedRace}</h3>
       <h3>Effects:</h3>
       <div className="strain-effects">
         <div>
@@ -39,7 +40,9 @@ const StrainCard = props => {
       </div>
       <h3>Flavors:</h3>
       <ul className="flavors">{getFlavors()}</ul>
-      <button>Add to Favorites</button>
+      <div className="add-favorite">
+        <button>Add to Favorites</button>
+      </div>
     </div>
   );
 };
