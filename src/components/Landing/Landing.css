@@ -8,3 +8,7 @@
   background-size: cover;
   background-color: rgba(235, 216, 136, 0.6);
   background-blend-mode: multiply; }
+
+section {
+  width: 33.33%;
+  padding: 15px; }

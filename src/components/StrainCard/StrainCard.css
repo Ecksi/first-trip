@@ -1,8 +1,16 @@
-.strainCard {
+.strain-card {
   border: 2px solid green;
-  width: 30%; }
+  border-radius: 10px;
+  width: 350px;
+  height: 450px;
+  margin: 20px 0; }
+  .strain-card h1,
+  .strain-card h3 {
+    text-align: center;
+    margin: 10px 0; }
 
-h3 {
+.add-favorite {
+  margin-top: 20px;
   text-align: center; }
 
 .strain-effects {
@@ -11,9 +19,13 @@ h3 {
   height: 175px; }
   .strain-effects h4 {
     text-align: center;
-    text-decoration: underline; }
+    text-decoration: underline;
+    margin-bottom: 10px; }
   .strain-effects ul {
     height: 120px; }
+
+.strain-effect {
+  margin-bottom: 5px; }
 
 .flavors {
   display: flex;
