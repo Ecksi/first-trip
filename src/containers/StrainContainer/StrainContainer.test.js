@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { StrainContainer, mapStateToProps, mapDispatchToProps } from './index';
 import fetchStrainData from '../../utils/fetchStrainData';
-import fetchStrainEffects from '../../utils/fetchEffectsData';
+import fetchEffectsData from '../../utils/fetchEffectsData';
 
 jest.mock('../../utils/fetchStrainData');
 jest.mock('../../utils/fetchEffectsData');
@@ -49,7 +49,7 @@ describe('StrainContainer', () => {
     it('calls fetchStrainEffects', async () => {
       await strainContainer.instance().getStrainEffects();
 
-      expect(fetchStrainEffects).toHaveBeenCalledTimes(1);
+      expect(fetchEffectsData).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -157,6 +157,6 @@ describe('StrainContainer', () => {
       mappedProps.resetFilter();
 
       expect(mockDispatch).toHaveBeenCalledWith(mockAction);
-    })
+    });
   });
 });
