@@ -5,7 +5,7 @@ import { addFilter, removeFilter } from '../../actions';
 import './EffectCard.css';
 import PropTypes from 'prop-types';
 
-const EffectCard = props => {
+export const EffectCard = props => {
   const handleClick = event => {
     const { name } = event.target;
 

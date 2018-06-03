@@ -5,7 +5,7 @@ import Navigation from '../Navigation';
 import './ResultsContainer.css';
 import PropTypes from 'prop-types';
 
-const ResultContainer = props => {
+export const ResultContainer = props => {
   const searchCards = () => {
     return props.results.map(result => (
       <StrainCard
