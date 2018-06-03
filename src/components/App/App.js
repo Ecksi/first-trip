@@ -10,7 +10,6 @@ import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../../containers/Home';
-import AccountPage from '../../containers/Account';
 import ResultContainer from  '../../containers/ResultContainer';
 
 export const App = () => 
@@ -30,15 +29,11 @@ export const App = () =>
       />
       <Route 
         exact path={routes.PASSWORD_FORGET} 
-        component={() => <PasswordForgetPage />} 
+        component={() => <PasswordForgetPage />}
       />
       <Route
         exact path={routes.HOME}
         component={() => <HomePage />}
-      />
-      <Route
-        exact path={routes.ACCOUNT}
-        component={() => <AccountPage />}
       />
       <Route
         exact path={routes.RESULTS}
