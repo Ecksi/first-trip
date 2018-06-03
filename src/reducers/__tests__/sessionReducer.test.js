@@ -1,4 +1,4 @@
-import sessionReducer from '../session';
+import sessionReducer from '../sessionReducer';
 
 describe('sessionReducer', () => {
   it('returns a default state', () => {

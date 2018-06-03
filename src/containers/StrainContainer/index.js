@@ -8,28 +8,26 @@ import {
   addEffects,
   addFilter,
   resetFilter,
-  searchResults,
-  searchByFilters } from '../../actions';
+  searchResults } from '../../actions';
 import fetchStrainData from '../../utils/fetchStrainData';
-import fetchStrainEffects from '../../utils/fetchEffectsData';
+import fetchEffectsData from '../../utils/fetchEffectsData';
 import EffectCard from '../EffectCard';
 import './StrainContainer.css';
 import PropTypes from 'prop-types';
 
-class StrainContainer extends Component {
+export class StrainContainer extends Component {
   componentDidMount = async () => {
-    await this.getStrainEffects();
+    await this.getEffectsData();
     await this.getStrainData();
   }
 
   getStrainData = async () => {
     const strainData = await fetchStrainData();
-
     this.props.addStrains(strainData);
   }
 
   getStrainEffects = async () =>{
-    const effectsData = await fetchStrainEffects();
+    const effectsData = await fetchEffectsData();
 
     this.props.addEffects(effectsData);
   }
@@ -137,8 +135,8 @@ export const mapDispatchToProps = dispatch => ({
   addEffects: effects => dispatch(addEffects(effects)),
   addFilters: filters => dispatch(addFilter(filters)),
   searchResults: results => dispatch(searchResults(results)),
-  searchByFilters: (effectType, filters, strains) =>
-    dispatch(searchByFilters(effectType, filters, strains)),
+  // searchByFilters: (effectType, filters, strains) =>
+  //   dispatch(searchByFilters(effectType, filters, strains)),
   resetFilter: () => dispatch(resetFilter()),
 });
 

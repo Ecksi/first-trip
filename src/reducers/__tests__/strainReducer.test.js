@@ -1,4 +1,4 @@
-import strainsReducer from '../strains';
+import strainsReducer from '../strainsReducer';
 import * as actions from '../../actions';
 
 describe('strainsReducer', () => {

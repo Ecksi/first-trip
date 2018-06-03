@@ -1,8 +1,8 @@
 import { createStore } from 'redux';
 import rootReducer from '../index';
-import strainsReducer from '../strains';
-import effectsReducer from '../effects';
-import filtersReducer from '../filters';
+import strainsReducer from '../strainsReducer';
+import effectsReducer from '../effectsReducer';
+import filtersReducer from '../filtersReducer';
 
 const store = createStore(rootReducer);
 

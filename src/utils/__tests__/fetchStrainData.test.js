@@ -1,6 +1,8 @@
 import fetchStrainData from '../fetchStrainData';
 import { doFetch } from '../doFetch';
 
+jest.mock('../doFetch');
+
 describe('fetchStrainData', () => {
   let mockStrainResults;
 
@@ -15,7 +17,7 @@ describe('fetchStrainData', () => {
     };
   });
 
-  it('calls doFetch', async () => {
+  it('calls doFetch', () => {
 
     expect(mockStrainResults).toHaveBeenCalledTimes(1);
   });
