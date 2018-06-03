@@ -10,14 +10,14 @@ import {
   resetFilter,
   searchResults } from '../../actions';
 import fetchStrainData from '../../utils/fetchStrainData';
-import fetchStrainEffects from '../../utils/fetchEffectsData';
+import fetchEffectsData from '../../utils/fetchEffectsData';
 import EffectCard from '../EffectCard';
 import './StrainContainer.css';
 import PropTypes from 'prop-types';
 
 export class StrainContainer extends Component {
   componentDidMount = async () => {
-    await this.getStrainEffects();
+    await this.getEffectsData();
     await this.getStrainData();
   }
 
@@ -27,7 +27,7 @@ export class StrainContainer extends Component {
   }
 
   getStrainEffects = async () =>{
-    const effectsData = await fetchStrainEffects();
+    const effectsData = await fetchEffectsData();
 
     this.props.addEffects(effectsData);
   }

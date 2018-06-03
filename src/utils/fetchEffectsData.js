@@ -1,7 +1,7 @@
 import { strainKey } from '../private/keys';
 import { doFetch } from './doFetch';
 
-const fetchFavoriteData = async () => {
+const fetchEffectsData = async () => {
   const url = `http://strainapi.evanbusse.com/${strainKey}/searchdata/effects`;
   const effectsData = await doFetch(url);
 
@@ -20,4 +20,4 @@ const sortedEffects = dirtyData => {
   });
 };
 
-export default fetchFavoriteData;
+export default fetchEffectsData;

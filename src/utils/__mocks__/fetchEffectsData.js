@@ -1,4 +1,4 @@
-export const fetchEffectsData = jest.fn().mockImplementation(() => 
+const fetchEffectsData = jest.fn().mockImplementation(() => 
   Promise.resolve(
     [
       {
@@ -27,3 +27,5 @@ export const fetchEffectsData = jest.fn().mockImplementation(() =>
       },
     ])
 );
+
+export default fetchEffectsData;

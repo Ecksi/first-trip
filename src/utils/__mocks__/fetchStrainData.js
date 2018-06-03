@@ -1,4 +1,4 @@
-export const fetchStrainData = jest.fn().mockImplementation(() => {
+const fetchStrainData = jest.fn().mockImplementation(() => {
   Promise.resolve({
     "Afpak": {
       "id": 1,
@@ -28,5 +28,6 @@ export const fetchStrainData = jest.fn().mockImplementation(() => {
       }
     }
   });
-  console.log('hey');
 });
+
+export default fetchStrainData;
