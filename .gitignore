@@ -21,7 +21,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # snapshots
-/src/components/*/__snapshots__
+/src/**/__snapshots__
 
 # private
 /src/private
