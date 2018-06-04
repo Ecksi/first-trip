@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
-import { auth } from '../../firebase';
-import * as routes from '../../constants/routes';
-import Navigation from '../../containers/Navigation';
+import { auth } from '../../../firebase';
+import * as routes from '../../../constants/routes';
+import Navigation from '../../../containers/Navigation';
 import PropTypes from 'prop-types';
+import './SignIn.css';
 
 const SignInPage = ({ history }) =>
   <div>
     <div className="header-background">
       <Navigation />
     </div>
-    <h1>SignIn</h1>
+    <h1>Sign In</h1>
     <SignInForm history={history} />
     <PasswordForgetLink />
     <SignUpLink />

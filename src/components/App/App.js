@@ -6,11 +6,12 @@ import {
 import withAuthentication from '../../auth/withAuthentication';
 import * as routes from '../../constants/routes';
 import LandingPage from '../Landing';
-import SignUpPage from '../SignUp';
-import SignInPage from '../SignIn';
-import PasswordForgetPage from '../PasswordForget';
+import SignUpPage from '../Firebase/SignUp';
+import SignInPage from '../Firebase/SignIn';
+import PasswordForgetPage from '../Firebase/PasswordForget';
 import HomePage from '../../containers/Home';
 import ResultContainer from  '../../containers/ResultContainer';
+import './App.css';
 
 export const App = () => 
   <Router>

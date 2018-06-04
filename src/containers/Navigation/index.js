@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import SignOutButton from '../../components/SignOut';
+import SignOutButton from '../../components/Firebase/SignOut';
 import * as routes from '../../constants/routes';
 import './Navigation.css';
 import PropTypes from 'prop-types';
