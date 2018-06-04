@@ -4,7 +4,7 @@ import { compose } from 'recompose';
 import withAuthorization from '../../auth/withAuthorization';
 import { db } from '../../firebase';
 import Navigation from '../Navigation';
-import StrainContainer from '../StrainContainer';
+import EffectButtons from '../EffectButtons';
 import PropTypes from 'prop-types';
 
 class HomePage extends Component {
@@ -22,8 +22,7 @@ class HomePage extends Component {
         <div className="header-background">
           <Navigation />
         </div>
-        <p>The Home Page is accessible by every signed in user.</p>
-        <StrainContainer />
+        <EffectButtons />
       </div>
     );
   }
