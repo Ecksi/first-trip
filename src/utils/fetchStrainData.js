@@ -1,11 +1,15 @@
-import { strainKey } from '../private/keys';
-import { doFetch } from './doFetch';
+const fetchStrainData = async url => {
+  try {
+    const response = await fetch(url);
 
-const fetchStrainData = async () => {
-  const url = `http://strainapi.evanbusse.com/${strainKey}/strains/search/all`;
-  const strainData = await doFetch(url);
+    if (!response.ok) {
+      throw new Error(`${response.status}`);
+    }
 
-  return cleanStrainData(strainData);
+    return cleanStrainData(await response.json());
+  } catch (error) {
+    throw new Error(`Network request failed. (error: ${error.message})`);
+  }
 };
 
 const cleanStrainData = dirtyData => {
