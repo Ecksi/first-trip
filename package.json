@@ -38,7 +38,8 @@
       "src/**/*.{js,jsx}",
       "!src/index.js",
       "!src/auth/*",
-      "!src/firebase/*"
+      "!src/firebase/*",
+      "!src/components/Firebase/*/*.{js,jsx}"
     ]
   }
 }
