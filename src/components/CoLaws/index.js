@@ -1,9 +1,10 @@
 import React from 'react';
+import './CoLaws.css';
 
 const CoLaws = () => {
   return (
-    <div>
-      <h3>Somethings to know</h3>
+    <div className='co-laws'>
+      <h1 className='header'>Somethings to know</h1>
       <p>Who can buy? 
         <span>Anyone over 21</span></p>
       <p>Where can I consume?
@@ -18,7 +19,9 @@ const CoLaws = () => {
         <span>Only pcensed retail marijuana stores may sell retail marijuana, and only to those 21 and older. Medical marijuana requires a state red card, which can only be obtained by Colorado residents with a recommendation from a doctor.</span></p>
       <p>How much does it cost?
         <span>Typically it will cost you around 120 for an ounce.</span></p>
+      <br />
       <p>For More information visit these resources</p>
+      <br />
       <ul>
         <a href="https://www.colorado.gov/pacific/marijuanainfodenver/residents-visitors">
           <li>Colorado.gov</li></a>
