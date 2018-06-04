@@ -12,15 +12,17 @@
 .nav-list li a {
   text-decoration: none;
   margin-right: 20px;
-  color: lime;
+  color: #345b24;
+  text-shadow: 1px 1px rgba(0, 255, 0, 0.7);
 }
 
 .nav-list button {
-  font-size: 20px;
-  color: lime;
+  font-size: 24px;
+  color: #345b24;
+  text-shadow: 1px 1px rgba(0, 255, 0, 0.7);
   background: none;
   border: none;
-  margin-right: 10px;
+  margin-right: 20px;
   padding-bottom: 20px;
   width: 100px;
 }
