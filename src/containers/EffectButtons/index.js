@@ -9,20 +9,23 @@ import {
   addFilter,
   resetFilter,
   searchResults } from '../../actions';
+import { strainKey } from '../../private/keys';
 import fetchStrainData from '../../utils/fetchStrainData';
 import fetchEffectsData from '../../utils/fetchEffectsData';
 import EffectCard from '../EffectCard';
-import './StrainContainer.css';
 import PropTypes from 'prop-types';
+import './EffectButtons.css';
 
-export class StrainContainer extends Component {
-  componentDidMount = async () => {
-    await this.getEffectsData();
-    await this.getStrainData();
+export class EffectButtons extends Component {
+  componentDidMount = () => {
+    this.getStrainEffects();
+    this.getStrainData();
   }
 
   getStrainData = async () => {
-    const strainData = await fetchStrainData();
+    const url = `http://strainapi.evanbusse.com/${strainKey}/strains/search/all`;    
+    const strainData = await fetchStrainData(url);
+    
     this.props.addStrains(strainData);
   }
 
@@ -81,8 +84,7 @@ export class StrainContainer extends Component {
   render() {
     return (
       <div>
-        <h1>Hello there </h1>
-        <h3>Select the effects you would like to have or avoid:</h3>
+        <h1 className="strain-header">Select the effects you would like to have or avoid:</h1>
         <div className="effects">
           <h2>Positive Effects</h2>
           <h2>Medical Effects</h2>
@@ -99,8 +101,8 @@ export class StrainContainer extends Component {
             {this.showEffects('negative')}
           </ul>
         </div>
-        <div className="effects">
-          <NavLink to="/results">
+        <NavLink to="/results">
+          <div className="effects filter-by">
             <button
               className="filter"
               onClick={this.filterEffects}
@@ -116,8 +118,8 @@ export class StrainContainer extends Component {
               onClick={this.filterEffects}
               name="negative">Filter by Negative
             </button>
-          </NavLink>
-        </div>
+          </div>
+        </NavLink>
       </div>
     );
   }
@@ -140,7 +142,7 @@ export const mapDispatchToProps = dispatch => ({
   resetFilter: () => dispatch(resetFilter()),
 });
 
-StrainContainer.propTypes = {
+EffectButtons.propTypes = {
   addStrains: PropTypes.func.isRequired,
   addEffects: PropTypes.func.isRequired,
   strains: PropTypes.array.isRequired,
@@ -152,4 +154,4 @@ StrainContainer.propTypes = {
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(StrainContainer));
+  connect(mapStateToProps, mapDispatchToProps)(EffectButtons));

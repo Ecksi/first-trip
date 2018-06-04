@@ -1,0 +1,27 @@
+.strain-header {
+  text-align: center;
+  margin: 25px 0; }
+
+div .effects {
+  display: flex;
+  justify-content: space-around; }
+
+.effects h2 {
+  margin-bottom: 20px;
+  text-decoration: underline; }
+
+.effects ul {
+  overflow: scroll;
+  height: 325px;
+  width: 175px; }
+
+.filter {
+  margin: 20px 0 30px 15px; }
+
+.filterAll {
+  margin-left: 45%;
+  width: 200px; }
+
+.filter-by {
+  margin-bottom: 20px;
+  margin-right: 10px; }
