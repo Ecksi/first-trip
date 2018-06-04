@@ -1,11 +1,18 @@
 import { strainKey } from '../private/keys';
-import { doFetch } from './doFetch';
 
 const fetchEffectsData = async () => {
-  const url = `http://strainapi.evanbusse.com/${strainKey}/searchdata/effects`;
-  const effectsData = await doFetch(url);
+  try {
+    const url = `http://strainapi.evanbusse.com/${strainKey}/searchdata/effects`;
+    const response = await fetch(url);
 
-  return sortedEffects(effectsData);
+    if (!response.ok) {
+      throw new Error(`${response.status}`);
+    }
+
+    return sortedEffects(await response.json());
+  } catch (error) {
+    throw new Error(`Network request failed. (error: ${error.message})`);
+  }
 };
 
 const sortedEffects = dirtyData => {
