@@ -3,8 +3,8 @@ import {
   Link,
   withRouter,
 } from 'react-router-dom';
-import { auth, db } from '../../firebase';
-import * as routes from '../../constants/routes';
+import { auth, db } from '../../../firebase';
+import * as routes from '../../../constants/routes';
 import PropTypes from 'prop-types';
 
 const INITIAL_STATE = {
