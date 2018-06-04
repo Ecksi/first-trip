@@ -3,9 +3,29 @@
   margin: 0;
   font-family: sans-serif; }
 
+html {
+  background: url("https://www.fg-a.com/wallpapers/white-marble-3-2018.jpg") no-repeat center center fixed;
+  background-size: cover;
+  background-color: rgba(235, 216, 136, 0.6);
+  background-blend-mode: multiply; }
+
 .header-background {
   height: 350px;
   background-image: url("https://greenrushdaily.com/wp-content/uploads/2017/08/how-to-buy-legal-weed-in-colorado-4.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: 49%; }
+
+.header {
+  margin-bottom: 15px;
+  text-align: center;
+  text-decoration: underline;
+  font-family: Ubuntu;
+  font-size: 26px;
+  letter-spacing: 1px; }
+
+span, p {
+  font-family: Lato; }
+
+p {
+  margin-bottom: 5px; }
