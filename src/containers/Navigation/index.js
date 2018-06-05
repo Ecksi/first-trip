@@ -21,7 +21,7 @@ const NavigationAuth = () =>
     <li><SignOutButton /></li>
   </ul>;
 
-const NavigationNonAuth = () =>
+export const NavigationNonAuth = () =>
   <ul className="nav-list">
     <li><Link to={routes.LANDING}>Landing</Link></li>
     <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
