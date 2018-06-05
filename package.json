@@ -37,6 +37,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "!src/index.js",
+      "!src/components/App/*",
       "!src/auth/*",
       "!src/firebase/*",
       "!src/components/Firebase/*/*.{js,jsx}"
