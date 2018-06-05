@@ -1,5 +1,8 @@
-const fetchStrainData = async url => {
+import { strainKey } from '../private/keys';
+
+const fetchStrainData = async () => {
   try {
+    const url = `http://strainapi.evanbusse.com/${strainKey}/strains/search/all`;
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -12,7 +15,7 @@ const fetchStrainData = async url => {
   }
 };
 
-const cleanStrainData = dirtyData => {
+export const cleanStrainData = dirtyData => {
   const strainNames = Object.keys(dirtyData);
   const strainData = Object.values(dirtyData);
   let cleanStrainData = [];

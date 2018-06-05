@@ -15,7 +15,7 @@ const fetchEffectsData = async () => {
   }
 };
 
-const sortedEffects = dirtyData => {
+export const sortedEffects = dirtyData => {
   return dirtyData.reduce((sortedData, data) => {
     sortedData[data.type].push(data.effect);
 
