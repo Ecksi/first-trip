@@ -5,6 +5,7 @@ import strainsReducer from './strainsReducer';
 import effectsReducer from './effectsReducer';
 import filtersReducer from './filtersReducer';
 import searchResultsReducer from './searchResultsReducer';
+import favoritesReducer from './favoritesReducer';
 
 const rootReducer = combineReducers({
   sessionState: sessionReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   effects: effectsReducer,
   filters: filtersReducer,
   results: searchResultsReducer,
+  favorites: favoritesReducer,
 });
 
 export default rootReducer;
