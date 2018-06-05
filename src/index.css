@@ -1,7 +1,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: sans-serif; }
+  font-family: Ubuntu, sans-serif; }
 
 html {
   background: url("https://www.fg-a.com/wallpapers/white-marble-3-2018.jpg") no-repeat center center fixed;
@@ -18,10 +18,10 @@ html {
 
 .header {
   margin-bottom: 15px;
-  text-align: center;
-  text-decoration: underline;
   font-family: Ubuntu;
   font-size: 26px;
+  text-align: center;
+  text-decoration: underline;
   letter-spacing: 1px; }
 
 span, p {
@@ -29,3 +29,11 @@ span, p {
 
 p {
   margin-bottom: 5px; }
+
+input {
+  padding-left: 10px;
+  font-size: 18px; }
+
+::placeholder {
+  font-size: 18px;
+  letter-spacing: 1px; }
