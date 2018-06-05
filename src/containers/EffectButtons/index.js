@@ -8,8 +8,9 @@ import {
   addEffects,
   addFilter,
   resetFilter,
-  searchResults } from '../../actions';
-import { strainKey } from '../../private/keys';
+  searchResults,
+  loadFavorites } from '../../actions';
+import { db } from '../../firebase/firebase';
 import fetchStrainData from '../../utils/fetchStrainData';
 import fetchEffectsData from '../../utils/fetchEffectsData';
 import EffectCard from '../EffectCard';
@@ -20,19 +21,31 @@ export class EffectButtons extends Component {
   componentDidMount = () => {
     this.getStrainEffects();
     this.getStrainData();
+    this.loadUserFavorites();
   }
 
   getStrainData = async () => {
-    const url = `http://strainapi.evanbusse.com/${strainKey}/strains/search/all`;    
-    const strainData = await fetchStrainData(url);
+    const strainData = await fetchStrainData();
     
     this.props.addStrains(strainData);
   }
 
-  getStrainEffects = async () =>{
+  getStrainEffects = async () => {
     const effectsData = await fetchEffectsData();
 
     this.props.addEffects(effectsData);
+  }
+
+  loadUserFavorites = async () => {
+    const userId = this.props.authUser.authUser.uid;
+    
+    let fizz = [];
+
+    await db.ref(`/users/${userId}/favorites/`).once('value', (snapshot) => fizz.push(...Object.values(snapshot.val())));
+
+    const strainIds = fizz.map(thing => thing.strainId);
+
+    this.props.loadFavorites(strainIds);
   }
 
   showEffects = type => {
@@ -77,7 +90,7 @@ export class EffectButtons extends Component {
         ? addSearchResults(strainsByFiltered['0'])
         : addSearchResults(searchResults);
     }
-
+    // this.props.searchByFilters(name, searchFilters, strains);
     this.props.resetFilter();
   }
 
@@ -130,6 +143,7 @@ export const mapStateToProps = state => ({
   effects: state.effects,
   filters: state.filters,
   results: state.results,
+  authUser: state.sessionState,
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -140,6 +154,7 @@ export const mapDispatchToProps = dispatch => ({
   // searchByFilters: (effectType, filters, strains) =>
   //   dispatch(searchByFilters(effectType, filters, strains)),
   resetFilter: () => dispatch(resetFilter()),
+  loadFavorites: favorites => dispatch(loadFavorites(favorites)),
 });
 
 EffectButtons.propTypes = {
@@ -149,8 +164,9 @@ EffectButtons.propTypes = {
   effects: PropTypes.object.isRequired,
   filters: PropTypes.array.isRequired,
   searchResults: PropTypes.func.isRequired,
-  searchByFilters: PropTypes.func.isRequired,
+  searchByFilters: PropTypes.func,
   resetFilter: PropTypes.func.isRequired,
+  loadFavorites: PropTypes.func.isRequired,
 };
 
 export default withRouter(

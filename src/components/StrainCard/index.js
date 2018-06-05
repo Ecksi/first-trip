@@ -1,11 +1,13 @@
 import React from 'react';
-import './StrainCard.css';
 import shortid from 'shortid';
+import { connect } from 'react-redux';
+import { db } from '../../firebase/firebase';
 import PropTypes from 'prop-types';
+import './StrainCard.css';
 
-const StrainCard = props => {
-  const { name, race, effects, flavors } = props;
-  const sanitizedRace = race[0].toUpperCase() + race.substring(1);
+export const StrainCard = props => {
+  const { id, name, race, effects, flavors } = props;
+  const sanitizedRace = race[0].toUpperCase() + race.substring(1);  
 
   const getEffects = type => {
     return effects[type].map(effect => (
@@ -17,6 +19,14 @@ const StrainCard = props => {
     return flavors.map(flavor => (
       <li key={shortid.generate()} className="strain-effect">{flavor}</li>
     ));
+  };
+
+  const addToFavorites = async event => {
+    const userId = props.authUser.authUser.uid;
+    
+    db.ref(`/users/${userId}/favorites`).push({
+      strainId: event.target.name,
+    });
   };
 
   return (
@@ -41,17 +51,22 @@ const StrainCard = props => {
       <h3>Flavors:</h3>
       <ul className="flavors">{getFlavors()}</ul>
       <div className="add-favorite">
-        <button>Add to Favorites</button>
+        <button onClick={addToFavorites} name={id}>Add to Favorites</button>
       </div>
     </div>
   );
 };
 
+export const mapStateToProps = state => ({
+  authUser: state.sessionState,
+});
+
 StrainCard.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   race: PropTypes.string.isRequired,
   effects: PropTypes.object,
   flavors: PropTypes.array,
 };
 
-export default StrainCard;
+export default connect(mapStateToProps)(StrainCard);
