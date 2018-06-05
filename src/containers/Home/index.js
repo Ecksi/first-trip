@@ -7,7 +7,7 @@ import Navigation from '../Navigation';
 import EffectButtons from '../EffectButtons';
 import PropTypes from 'prop-types';
 
-class HomePage extends Component {
+export class HomePage extends Component {
   componentDidMount() {
     const { onSetUsers } = this.props;
 
@@ -28,11 +28,11 @@ class HomePage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   users: state.userState.users,
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   onSetUsers: users => dispatch({ type: 'USERS_SET', users})
 });
 
