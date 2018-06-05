@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { StrainContainer, mapStateToProps, mapDispatchToProps } from './index';
+import { EffectButtons, mapStateToProps, mapDispatchToProps } from './index';
 import fetchStrainData from '../../utils/fetchStrainData';
-import fetchEffectsData from '../../utils/fetchEffectsData';
+import fetchEffectsData, { mockEffects } from '../../utils/fetchEffectsData';
 
 jest.mock('../../utils/fetchStrainData');
 jest.mock('../../utils/fetchEffectsData');
 
-describe('StrainContainer', () => {
-  let strainContainer;
+describe('EffectButtons', () => {
+  let effectButtons;
   let mockProps;
 
   beforeEach(() => {
@@ -26,31 +26,51 @@ describe('StrainContainer', () => {
       resetFilter: jest.fn()
     };
 
-    strainContainer = shallow(
-      <StrainContainer {...mockProps} />,
+    effectButtons = shallow(
+      <EffectButtons {...mockProps} />,
       { disableLifecycleMethods: true });
   });
 
   describe('component', () => {
     it('should match the snapshot', () => {
-      expect(strainContainer).toMatchSnapshot();
+      expect(effectButtons).toMatchSnapshot();
     });
   });
 
   describe('getStrainData', () => {
     it('calls fetchStrainData', async () => {
-      await strainContainer.instance().getStrainData();
+      await effectButtons.instance().getStrainData();
       
       expect(fetchStrainData).toHaveBeenCalled();
+    });
+
+    it('adds strains to the store', async () => {
+      await effectButtons.instance().getStrainData();
+
+      expect(mockProps.addStrains).toHaveBeenCalledWith(fetchStrainData());
     });
   });
 
   describe('getStrainEffects', () => {
     it('calls fetchStrainEffects', async () => {
-      await strainContainer.instance().getStrainEffects();
+      await effectButtons.instance().getStrainEffects();
 
       expect(fetchEffectsData).toHaveBeenCalledTimes(1);
     });
+
+    it('adds effects to the store', async () => {
+      await effectButtons.instance().getStrainEffects();
+
+      expect(mockProps.addEffects).toHaveBeenCalledWith(mockEffects);
+    });
+  });
+
+  describe('showEffects', () => {
+
+  });
+
+  describe('filterEvents', () => {
+
   });
 
   describe('mapStateToProps', () => {
