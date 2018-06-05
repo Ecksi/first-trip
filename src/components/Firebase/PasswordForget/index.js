@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import Navigation from '../../../containers/Navigation';
 import { Link } from 'react-router-dom';
 import { auth } from '../../../firebase';
+import './PasswordForget.css';
 
 const PasswordForgetPage = () =>
-  <div>
-    <h1>PasswordForget</h1>
+  <div className="pw-forget">
+    <div className="header-background">
+      <Navigation />
+    </div>
+    <h1 className="pw-forget-header">Colorado candies make you forget your password?</h1>
     <PasswordForgetForm />
   </div>;
 
