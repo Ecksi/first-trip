@@ -16,14 +16,14 @@ const Navigation = ({ authUser }) =>
 
 const NavigationAuth = () =>
   <ul className="nav-list">
-    <li><Link to={routes.LANDING}>Landing</Link></li>
-    <li><Link to={routes.HOME}>Home</Link></li>
+    <li><Link to={routes.LANDING}>Home</Link></li>
+    <li><Link to={routes.HOME}>Search</Link></li>
     <li><SignOutButton /></li>
   </ul>;
 
 export const NavigationNonAuth = () =>
   <ul className="nav-list">
-    <li><Link to={routes.LANDING}>Landing</Link></li>
+    <li><Link to={routes.LANDING}>Home</Link></li>
     <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
   </ul>;
 
