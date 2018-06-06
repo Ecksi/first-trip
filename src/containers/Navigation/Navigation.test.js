@@ -4,9 +4,12 @@ import { Navigation } from './index';
 
 describe('Navigation', () => {
   let navigation;
+  let mockProps = {
+    authUser: {}
+  };
 
   beforeEach(() => {
-    navigation = shallow(<Navigation />);
+    navigation = shallow(<Navigation {...mockProps} />);
   });
   
   it('should match the snapshot', () => {
