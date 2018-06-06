@@ -1,0 +1,22 @@
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center; }
+  .sign-up form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 15px auto; }
+  .sign-up input {
+    height: 30px;
+    width: 300px;
+    margin-bottom: 10px; }
+  .sign-up button {
+    height: 30px;
+    width: 314px;
+    font-size: 16px; }
+
+.pw-forget-header {
+  margin-top: 20px;
+  margin-bottom: 10px; }

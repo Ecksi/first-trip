@@ -13,10 +13,12 @@ const SignInPage = ({ history }) =>
     <div className="header-background">
       <Navigation />
     </div>
-    <h1>Sign In</h1>
-    <SignInForm history={history} />
-    <PasswordForgetLink />
-    <SignUpLink />
+    <div className="sign-in">
+      <h1>Sign In</h1>
+      <SignInForm history={history} />
+      <PasswordForgetLink />
+      <SignUpLink />
+    </div>
   </div>;
 
 const byPropKey = (propertyName, value) => () => ({

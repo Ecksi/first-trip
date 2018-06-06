@@ -16,11 +16,11 @@ export const ResultContainer = props => {
   };
 
   return (
-    <div>
+    <div className="results-header">
       <div className="header-background">
         <Navigation />
       </div>
-      <h2>Your Results</h2>
+      <h1>These are the strains that matched your search filter</h1>
       <div className="search-container">
         {searchCards()}
       </div>

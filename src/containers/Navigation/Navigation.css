@@ -9,14 +9,16 @@
 
 .nav-list li a {
   text-decoration: none;
+  font-weight: bold;
   margin-right: 20px;
-  color: #345b24;
-  text-shadow: 1px 1px rgba(0, 255, 0, 0.7); }
+  color: #7FFF00;
+  text-shadow: 3px 3px #8888; }
 
 .nav-list button {
   font-size: 24px;
-  color: #345b24;
-  text-shadow: 1px 1px rgba(0, 255, 0, 0.7);
+  color: #7FFF00;
+  text-shadow: 3px 3px #8888;
+  font-weight: bold;
   background: none;
   border: none;
   margin-right: 20px;

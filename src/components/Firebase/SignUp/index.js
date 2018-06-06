@@ -5,7 +5,9 @@ import {
 } from 'react-router-dom';
 import { auth, db } from '../../../firebase';
 import * as routes from '../../../constants/routes';
+import Navigation from '../../../containers/Navigation';
 import PropTypes from 'prop-types';
+import './SignUp.css';
 
 const INITIAL_STATE = {
   username: '',
@@ -20,7 +22,10 @@ const byPropKey = (propertyName, value) => () => ({
 });
 
 const SignUpPage = ({ history }) =>
-  <div>
+  <div className="sign-up">
+    <div className="header-background">
+      <Navigation />
+    </div>
     <h1>SignUp</h1>
     <SignUpForm history={history} />
   </div>;
