@@ -3,15 +3,15 @@ li {
   text-align: center; }
 
 .effect-button:hover {
-  background: blue; }
+  background: #345b24; }
 
 .effect-button:active {
-  background: red; }
+  background: rgba(7, 66, 7, 0.5); }
 
 button {
   width: 150px;
   height: 50px; }
 
 .selected {
-  background-color: purple;
-  border: 2px solid green; }
+  background-color: #7deb8b;
+  border: 2px solid #48af48; }
