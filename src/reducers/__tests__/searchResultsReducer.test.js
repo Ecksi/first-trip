@@ -15,17 +15,17 @@ describe('searchResultsReducer', () => {
     expect(searchResultsReducer(undefined, actions.searchResults(results))).toEqual(expected);
   });
 
-  it.skip('returns a new state when called with SEARCH_BY_FILTERS action', () => {
-    let effectType = 'positive';
-    let filters = ['happy'];
-    let strains = [
-      { name: 'bingo', effects: {positive: ['happy']} },
-      { name: 'bango', effects: {positive: ['happy', 'giggly']} },
-      { name: 'bongo', effects: { positive: ['Euphoric']} }];
-    let expected = [
-      { name: 'bingo', effects: { positive: ['happy']} },
-      { name: 'bango', effects: { positive: ['happy', 'giggly']} }];
+  // it('returns a new state when called with SEARCH_BY_FILTERS action', () => {
+  //   let effectType = 'positive';
+  //   let filters = ['happy'];
+  //   let strains = [
+  //     { name: 'bingo', effects: {positive: ['happy']} },
+  //     { name: 'bango', effects: {positive: ['happy', 'giggly']} },
+  //     { name: 'bongo', effects: { positive: ['Euphoric']} }];
+  //   let expected = [
+  //     { name: 'bingo', effects: { positive: ['happy']} },
+  //     { name: 'bango', effects: { positive: ['happy', 'giggly']} }];
 
-    expect(searchResultsReducer(undefined, actions.searchByFilters(effectType, filters, strains))).toEqual(expected);
-  });
+  //   expect(searchResultsReducer(undefined, actions.searchByFilters(effectType, filters, strains))).toEqual(expected);
+  // });
 });
