@@ -7,6 +7,7 @@ import {
 import Navigation from '../../containers/Navigation';
 import './FavoritesContainer.css';
 import StrainCard from '../../components/StrainCard';
+import PropTypes from 'prop-types';
 
 export const FavoritesContainer = props => {
   const getFavoriteStrains = () => 
@@ -62,5 +63,11 @@ export const mapDispatchToProps = dispatch => ({
   addFavorite: id => dispatch(addFavorite(id)),
   removeFavorite: id => dispatch(removeFavorite(id)),
 });
+
+FavoritesContainer.propTypes = {
+  favorites: PropTypes.array.isRequired,
+  addFavorite: PropTypes.func.isRequired,
+  removeFavorite: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoritesContainer);
