@@ -21,7 +21,7 @@ export class EffectButtons extends Component {
   componentDidMount = () => {
     this.getStrainEffects();
     this.getStrainData();
-    this.loadUserFavorites();
+    // this.loadUserFavorites();
   }
 
   getStrainData = async () => {
@@ -36,17 +36,13 @@ export class EffectButtons extends Component {
     this.props.addEffects(effectsData);
   }
 
-  loadUserFavorites = async () => {
-    const userId = this.props.authUser.authUser.uid;
-    
-    let fizz = [];
-
-    await db.ref(`/users/${userId}/favorites/`).once('value', (snapshot) => fizz.push(...Object.values(snapshot.val())));
-
-    const strainIds = fizz.map(thing => thing.strainId);
-
-    this.props.loadFavorites(strainIds);
-  }
+  // loadUserFavorites = async () => {
+  //   const userId = this.props.authUser.authUser.uid;
+  //   // let favorites = [];
+  //   await db.ref(`/users/${userId}/favorites/`).once('value', (snapshot) => favorites.push(...Object.values(snapshot.val())));
+  //   // const strainIds = favorites.map(thing => thing.strainId);
+  //   // this.props.loadFavorites(strainIds);
+  // }
 
   showEffects = type => {
     let propEffects = this.props.effects;
@@ -166,7 +162,8 @@ EffectButtons.propTypes = {
   searchResults: PropTypes.func.isRequired,
   searchByFilters: PropTypes.func,
   resetFilter: PropTypes.func.isRequired,
-  loadFavorites: PropTypes.func.isRequired,
+  loadFavorites: PropTypes.func,
+  authUser: PropTypes.object.isRequired,
 };
 
 export default withRouter(

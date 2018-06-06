@@ -18,12 +18,13 @@ describe('EffectButtons', () => {
       name: 'weed',
       strains: [{ name: 'weed' }],
       race: 'sativa',
-      effects: {type: {positive: 'happy'}},
+      effects: { "type": { "positive": "happy" } },
       filters: ['happy'],
       results: [{ name: 'weedTwo' }],
       searchResults: jest.fn(),
       searchByFilters: jest.fn(),
-      resetFilter: jest.fn()
+      resetFilter: jest.fn(),
+      authUser: {},
     };
 
     effectButtons = shallow(
@@ -66,11 +67,26 @@ describe('EffectButtons', () => {
   });
 
   describe('showEffects', () => {
+    it('shows all the effects in the store', () => {
+      const propEffects = mockProps.effects;
+      const expected = {"type": {"positive": "happy"}};
 
+      effectButtons.instance().showEffects('positive');
+
+      expect(propEffects).toEqual(expected);
+    });
   });
 
   describe('filterEvents', () => {
+    it('show strains that match the search filter', () => {
+      const propStrains = mockProps.strains;
+      const expected = [{ name: 'weed' }];
+      const mockedEvent = { target: {name: 'happy'} };
 
+      effectButtons.instance().filterEffects(mockedEvent);
+
+      expect(propStrains).toEqual(expected);
+    });
   });
 
   describe('mapStateToProps', () => {
@@ -107,6 +123,15 @@ describe('EffectButtons', () => {
       const expected = [{ name: 'weedTwo' }];
 
       expect(mappedProps.results).toEqual(expected);
+    });
+
+    it('can access the user from the store', () =>{
+      const user = mockProps.authUser;
+      const mockState = { user };
+      const mappedProps = mapStateToProps(mockState);
+      const expected = undefined;
+
+      expect(mappedProps.user).toEqual(expected);
     });
   });
 
@@ -175,6 +200,18 @@ describe('EffectButtons', () => {
       };
 
       mappedProps.resetFilter();
+
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+    });
+
+    it('calls loadFavorites dispatch', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = {
+        type: 'LOAD_FAVORITES'
+      };
+
+      mappedProps.loadFavorites();
 
       expect(mockDispatch).toHaveBeenCalledWith(mockAction);
     });
