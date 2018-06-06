@@ -37,15 +37,15 @@ export const StrainCard = props => {
       <div className="strain-effects">
         <div>
           <h4>Positive</h4>
-          <ul>{() => getEffects('positive')}</ul>
+          <ul>{getEffects('positive')}</ul>
         </div>
         <div>
           <h4>Medical</h4>
-          <ul>{() => getEffects('medical')}</ul>
+          <ul>{getEffects('medical')}</ul>
         </div>
         <div>
           <h4>Negative</h4>
-          <ul>{() => getEffects('negative')}</ul>
+          <ul>{getEffects('negative')}</ul>
         </div>
       </div>
       <h3>Flavors:</h3>
