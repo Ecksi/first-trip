@@ -37,15 +37,15 @@ export const StrainCard = props => {
       <div className="strain-effects">
         <div>
           <h4>Positive</h4>
-          <ul>{getEffects('positive')}</ul>
+          <ul>{() => getEffects('positive')}</ul>
         </div>
         <div>
           <h4>Medical</h4>
-          <ul>{getEffects('medical')}</ul>
+          <ul>{() => getEffects('medical')}</ul>
         </div>
         <div>
           <h4>Negative</h4>
-          <ul>{getEffects('negative')}</ul>
+          <ul>{() => getEffects('negative')}</ul>
         </div>
       </div>
       <h3>Flavors:</h3>
@@ -63,10 +63,11 @@ export const mapStateToProps = state => ({
 
 StrainCard.propTypes = {
   id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.array.isRequired,
   race: PropTypes.string.isRequired,
   effects: PropTypes.object,
   flavors: PropTypes.array,
+  authUser: PropTypes.object,
 };
 
 export default connect(mapStateToProps)(StrainCard);
