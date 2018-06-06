@@ -4,9 +4,12 @@ import { ResultContainer } from './index';
 
 describe('ResultsContainer', () => {
   let resultsContainer;
+  let mockProps = {
+    results: [],
+  };
 
   beforeEach(() => {
-    resultsContainer = shallow(<ResultContainer />);
+    resultsContainer = shallow(<ResultContainer {...mockProps} />);
   });
 
   it('should match the snapshot', () => {
