@@ -2,16 +2,21 @@
   border: 2px solid green;
   border-radius: 10px;
   width: 350px;
-  height: 450px;
-  margin: 20px 0; }
+  height: 475px;
+  margin: 20px;
+  box-shadow: 5px 5px 8px #888888; }
   .strain-card h1,
   .strain-card h3 {
     text-align: center;
     margin: 10px 0; }
+  .strain-card h1 {
+    font-size: 27px; }
 
 .add-favorite {
   margin-top: 20px;
   text-align: center; }
+  .add-favorite button {
+    box-shadow: 2px 2px 4px #888888; }
 
 .strain-effects {
   display: flex;
