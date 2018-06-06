@@ -1,24 +1,39 @@
-# First Trip
+# ![weed](./public/assets/weed.png) First Trip  ![weed](./public/assets/weed.png)
 
 ## Synopsis
 
-First trip is a tool to help out of state visitors find the correct strain of marijuana to that has effects they would like to experience.
+First trip is a tool to help out of state visitors find the correct strain of marijuana that has effects they would like to experience so they can get the most enjoyment out of their first trip.
 
 ### Technologies
-* React / Redux / Router
-* SASS
 
-### Tools 
+![react](./public/assets/react.svg)
+![redux](./public/assets/redux.svg)
+![router](./public/assets/router.svg)
+![sass](./public/assets/sass.svg)
+![jest](./public/assets/jest.svg)
 
-* Strain data from [The Strain API](http://strains.evanbusse.com/index.html)
-* [Firebase](https://firebase.google.com/)
-* GitHub Projects
+React - Redux - Router - SASS - Jest
+
+### Tools
+
+![strainapi](./public/assets/strainapi.png)
+![firebase](./public/assets/firebase.svg)
+![github projects](./public/assets/github.png)
+
+[The Strain API](http://strains.evanbusse.com/index.html) -
+Firebase - GitHub Projects
 
 ***
 
-### *Example* 
+### **_Examples_** 
+**Home Page**
+![home-page](./public/assets/home.png)
 
-![main screen](https://greenrushdaily.com/wp-content/uploads/2017/08/how-to-buy-legal-weed-in-colorado-4.jpg)
+**Search Page**
+![Search-page](./public/assets/search.png)
+
+**Results Page**
+![Results-page](./public/assets/results.png)
 
 ---
 
