@@ -11,6 +11,7 @@ import SignInPage from '../Firebase/SignIn';
 import PasswordForgetPage from '../Firebase/PasswordForget';
 import HomePage from '../../containers/Home';
 import ResultContainer from  '../../containers/ResultContainer';
+import FavoritesContainer from '../../containers/FavoritesContainer';
 import './App.css';
 
 export const App = () => 
@@ -39,6 +40,10 @@ export const App = () =>
       <Route
         exact path={routes.RESULTS}
         component={() => <ResultContainer />}
+      />
+      <Route
+        exact path={routes.FAVORITES}
+        component={() => <FavoritesContainer />}
       />
     </div>
   </Router>;

@@ -10,7 +10,7 @@ import {
   resetFilter,
   searchResults,
   loadFavorites } from '../../actions';
-import { db } from '../../firebase/firebase';
+// import { db } from '../../firebase/firebase';
 import fetchStrainData from '../../utils/fetchStrainData';
 import fetchEffectsData from '../../utils/fetchEffectsData';
 import EffectCard from '../EffectCard';

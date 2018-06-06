@@ -1,20 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { 
+import {
   addFavorite,
   removeFavorite,
 } from '../../actions';
+import Navigation from '../../containers/Navigation';
+import './FavoritesContainer.css';
 import StrainCard from '../../components/StrainCard';
-import Navigation from '../Navigation';
-import './ResultsContainer.css';
-import PropTypes from 'prop-types';
 
-export const ResultContainer = props => {
-  const searchCards = () => {
-    return props.results.map(result => (
+export const FavoritesContainer = props => {
+  const getFavoriteStrains = () => 
+    props.favorites.map(favorite =>
+      props.strains.filter(strain => {
+        return strain.id === favorite;
+      }));
+
+  const getFavoriteCards = () => {
+    const favorites = getFavoriteStrains();
+
+    return favorites.map(favorite => (
       <StrainCard
-        key={result.id}
-        {...result}
+        key={favorite[0].id}
+        {...favorite[0]}
         toggleFavorite={toggleFavorite}
         isFavorite={checkIfFavorited}
       />
@@ -34,20 +41,20 @@ export const ResultContainer = props => {
       : addFavorite(strainId);
 
   return (
-    <div className="results-header">
+    <div className="favorites">
       <div className="header-background">
         <Navigation />
       </div>
-      <h1>These are the strains that matched your search filter</h1>
+      <h1>Your favorite strains are</h1>
       <div className="search-container">
-        {searchCards()}
+        {getFavoriteCards()}
       </div>
     </div>
   );
 };
 
 export const mapStateToProps = state => ({
-  results: state.results,
+  strains: state.strains,
   favorites: state.favorites,
 });
 
@@ -56,11 +63,4 @@ export const mapDispatchToProps = dispatch => ({
   removeFavorite: id => dispatch(removeFavorite(id)),
 });
 
-ResultContainer.propTypes = {
-  results: PropTypes.array.isRequired,
-  favorites: PropTypes.array.isRequired,
-  addFavorite: PropTypes.func,
-  removeFavorite: PropTypes.func,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ResultContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(FavoritesContainer);

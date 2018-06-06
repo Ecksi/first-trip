@@ -1,13 +1,14 @@
 import React from 'react';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
-import { db } from '../../firebase/firebase';
+// import { db } from '../../firebase/firebase';
 import PropTypes from 'prop-types';
 import './StrainCard.css';
 
 export const StrainCard = props => {
-  const { id, name, race, effects, flavors } = props;
-  const sanitizedRace = race[0].toUpperCase() + race.substring(1);  
+  const { id, name, race, effects, flavors, isFavorite, toggleFavorite } = props;
+  const sanitizedRace = race[0].toUpperCase() + race.substring(1);
+  const styleToggle = isFavorite(id) ? 'favorited' : '';
 
   const getEffects = type => {
     return effects[type].map(effect => (
@@ -21,16 +22,8 @@ export const StrainCard = props => {
     ));
   };
 
-  const addToFavorites = async event => {
-    const userId = props.authUser.authUser.uid;
-    
-    db.ref(`/users/${userId}/favorites`).push({
-      strainId: event.target.name,
-    });
-  };
-
   return (
-    <div className="strain-card">
+    <div className={`strain-card ${styleToggle}`}>
       <h1>{name}</h1>
       <h3>Type: {sanitizedRace}</h3>
       <h3>Effects:</h3>
@@ -51,7 +44,7 @@ export const StrainCard = props => {
       <h3>Flavors:</h3>
       <ul className="flavors">{getFlavors()}</ul>
       <div className="add-favorite">
-        <button onClick={addToFavorites} name={id}>Add to Favorites</button>
+        <button onClick={() => toggleFavorite(id)} name={id}>Add to Favorites</button>
       </div>
     </div>
   );
@@ -68,6 +61,8 @@ StrainCard.propTypes = {
   effects: PropTypes.object,
   flavors: PropTypes.array,
   authUser: PropTypes.object,
+  isFavorite: PropTypes.func,
+  toggleFavorite: PropTypes.func,
 };
 
 export default connect(mapStateToProps)(StrainCard);
