@@ -11,6 +11,7 @@ function filtersReducer(state = INITIAL_STATE, action) {
     case 'REMOVE_FILTER': {
       const findIndex = state.indexOf(action.filter);
       const newState = [...state];
+
       newState.splice(findIndex, 1);
 
       return newState;
@@ -20,4 +21,3 @@ function filtersReducer(state = INITIAL_STATE, action) {
 }
 
 export default filtersReducer;
-// [...state] || state.slice() makes new copy of whole array

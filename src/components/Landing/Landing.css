@@ -1,3 +1,7 @@
+.header-background {
+  background-image: url("http://www.cpr.org/sites/default/files/images/20140515.cprnews.coloradoflagpot.istock.jpg");
+  opacity: 0.75; }
+
 .three-columns {
   display: flex;
   justify-content: space-around; }

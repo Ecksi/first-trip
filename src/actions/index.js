@@ -34,7 +34,17 @@ export const searchByFilters = (effectType, filters, strains) => ({
   strains
 });
 
-export const loadFavorites = (favorites) => ({
+export const loadFavorites = favorites => ({
   type: 'LOAD_FAVORITES',
   favorites
+});
+
+export const addFavorite = favorite => ({
+  type: 'ADD_FAVORITE',
+  favorite
+});
+
+export const removeFavorite = favorite => ({
+  type: 'REMOVE_FAVORITE',
+  favorite
 });

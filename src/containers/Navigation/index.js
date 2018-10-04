@@ -18,6 +18,7 @@ const NavigationAuth = () =>
   <ul className="nav-list">
     <li><Link to={routes.LANDING}>Home</Link></li>
     <li><Link to={routes.HOME}>Search</Link></li>
+    <li><Link to={routes.FAVORITES}>Favorites</Link></li>
     <li><SignOutButton /></li>
   </ul>;
 

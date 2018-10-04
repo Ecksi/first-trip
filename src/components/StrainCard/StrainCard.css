@@ -35,3 +35,6 @@
 .flavors {
   display: flex;
   justify-content: space-around; }
+
+.favorited {
+  background-color: rgba(240, 218, 54, 0.781); }
