@@ -83,9 +83,11 @@ export class EffectButtons extends Component {
       const searchResults = strainsByFiltered[highestMatch];
 
       name === 'negative'
-        ? addSearchResults(strainsByFiltered['0'])
-        : addSearchResults(searchResults);
+        ? this.props.searchResults(strainsByFiltered['0'])
+        : this.props.searchResults(searchResults);
     }
+
+    // get this reducer working- dont declare variables on store stuff.
     // this.props.searchByFilters(name, searchFilters, strains);
     this.props.resetFilter();
   }

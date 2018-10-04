@@ -2,9 +2,9 @@
   padding-right: 15px; }
 
 .intro-gif {
-  background-image: url("https://media.giphy.com/media/SiNHGETYAxrI1Q03MH/giphy.gif");
+  background-image: url("https://media.giphy.com/media/8gOuB1wMo0uzFJGnKj/giphy.gif");
   background-size: contain;
   background-repeat: no-repeat;
   height: 300px;
   width: 350px;
-  margin-top: 15px; }
+  margin: 20px auto; }

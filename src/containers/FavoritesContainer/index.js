@@ -33,7 +33,7 @@ export const FavoritesContainer = props => {
     props.favorites.some(favorite => favorite === strainId);
 
   const addFavorite = strainId => props.addFavorite(strainId);
-
+// fix this duplication no need for extra functions
   const removeFavorite = strainId => props.removeFavorite(strainId);
 
   const toggleFavorite = strainId =>

@@ -10,10 +10,12 @@ function favoritesReducer(state = INITIAL_STATE, action) {
     }
     case 'REMOVE_FAVORITE': {
       const newState = [...state];
-
       return newState.filter(favorites => favorites !== action.favorite);
     }
-    default: return state;
+    // no need for const just filter off the spread copy of state
+    default: 
+      return state;
+      // format the rest of the reducers like this
   }
 }
 
