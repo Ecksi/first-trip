@@ -2,6 +2,10 @@
   "name": "first-trip",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.1.0",
+    "node": "9.4.0"
+  },
   "dependencies": {
     "firebase": "^5.0.4",
     "node-sass-chokidar": "^1.2.2",
